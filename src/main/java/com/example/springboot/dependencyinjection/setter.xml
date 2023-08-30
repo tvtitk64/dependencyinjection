@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="emailService" class="com.example.springboot.dependencyinjection.EmailService" />
+    <!-- Bean cho SMSService -->
+    <bean id="smsService" class="com.example.springboot.dependencyinjection.SmsService" />
+
+    <bean id="notificationService" class="com.example.springboot.dependencyinjection.NotificationService">
+        <property name="messageService" ref="emailService" /> <!-- Inject EmailService -->
+        <!-- <property name="messageService" ref="smsService" /> --> <!-- Inject SMSService -->
+    </bean>
+</beans>
